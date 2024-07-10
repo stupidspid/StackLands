@@ -31,45 +31,18 @@ public class InputService : MonoBehaviour
             
         var worldPos = _mainCamera.ScreenToWorldPoint(screenPosition);
         
-        Ray ray = _mainCamera.ScreenPointToRay(screenPosition);
-        RaycastHit hit;
-
-        Debug.DrawRay(ray.origin, ray.direction * inputSettings.RaycastDistance, Color.red, 2f);
-
-        
-        if (Physics.Raycast(ray, out hit, inputSettings.RaycastDistance, inputSettings.SupportedLayers))
-        {
-            Debug.Log("Hit object: " + hit.collider.gameObject.name);
-        }
-        else
-        {
-            Debug.Log("Raycast did not hit any object.");
-            Debug.Log("Ray origin: " + ray.origin);
-            Debug.Log("Ray direction: " + ray.direction);
-            Debug.Log("Raycast distance: " + inputSettings.RaycastDistance);
-            Debug.Log("Supported layers: " + inputSettings.SupportedLayers.value);
-        }
-        
-        var result = Physics.Raycast(worldPos, Vector3.forward,
+        var result = Physics2D.Raycast(worldPos, Vector3.forward,
             inputSettings.RaycastDistance, inputSettings.SupportedLayers);
-
         
         if(!result)
             return;
 
-        // var dragableItem = result.transform.GetComponentInChildren<DragableItem>();
-        //     
-        // if(dragableItem == null)
-        //     return;
-        //
-        // StartCoroutine(DragItem(dragableItem));
-    }
-    
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Vector3 direction = transform.TransformDirection(Vector3.forward) * 100;
-        Gizmos.DrawRay(transform.position, direction);
+        var dragableItem = result.transform.GetComponentInChildren<DragableItem>();
+            
+        if(dragableItem == null)
+            return;
+
+        StartCoroutine(DragItem(dragableItem));
     }
 
     private IEnumerator DragItem(DragableItem dragableItem)
