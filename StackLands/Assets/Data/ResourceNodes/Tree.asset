@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237bd29d4b2147740b86db6f2e6e9caf, type: 3}
   m_Name: Tree
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: c99d58642aae2ca4799f9a804c6cebc3, type: 3}
-  name: Tree
-  cost: 0
-  unitsOfFood: 0
-  healthPoints: 0
+  <icon>k__BackingField: {fileID: 21300000, guid: c99d58642aae2ca4799f9a804c6cebc3, type: 3}
+  <name>k__BackingField: Tree
+  <cost>k__BackingField: 0
+  <unitsOfFood>k__BackingField: 0
+  <healthPoints>k__BackingField: 0
+  <type>k__BackingField: 4

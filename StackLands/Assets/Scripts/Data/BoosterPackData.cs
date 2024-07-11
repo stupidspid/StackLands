@@ -6,10 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BoosterPack")]
 public class BoosterPackData : ScriptableObject
 {
-    [SerializeField] private Sprite icon;
-    [SerializeField] private string name;
-    [SerializeField] private int cost;
-    [SerializeField] private List<BoosterPack> boosterPackContent;
+    [field:SerializeField] public Sprite icon { get; private set; }
+    [field:SerializeField] public string name { get; private set; }
+    [field:SerializeField] public int cost { get; private set; }
+    public List<BoosterPack> boosterPackContent;
 
 }
 
@@ -18,4 +18,11 @@ public struct BoosterPack
 {
     public CardData card;
     public int dropChance;
+    public BoosterPackType boosterPackType;
+}
+
+public enum BoosterPackType
+{
+    DEFAULT = 0,
+    TUTORIAL = 1,
 }

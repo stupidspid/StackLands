@@ -61,8 +61,8 @@
     <Compile Include="Assets\Plugins\Zenject\OptionalExtras\IntegrationTests\Tests\Bindings\TestFromSubContainerPrefab\TestFromSubContainerPrefab.cs" />
     <Compile Include="Assets\Plugins\Zenject\OptionalExtras\IntegrationTests\Tests\Bindings\TestFromSiblingComponent\TestFromSiblingComponent.cs" />
     <Compile Include="Assets\Plugins\Zenject\OptionalExtras\IntegrationTests\Tests\Factories\TestBindFactoryOne\TestBindFactoryOne.cs" />
-    <Compile Include="Assets\Plugins\Zenject\OptionalExtras\IntegrationTests\Tests\Bindings\TestFromSubContainerPrefabResource\TestFromSubContainerPrefabResource.cs" />
     <Compile Include="Assets\Plugins\Zenject\OptionalExtras\IntegrationTests\Tests\Bindings\TestFromPrefabInstaller\TestFromPrefabInstaller.cs" />
+    <Compile Include="Assets\Plugins\Zenject\OptionalExtras\IntegrationTests\Tests\Bindings\TestFromSubContainerPrefabResource\TestFromSubContainerPrefabResource.cs" />
     <Compile Include="Assets\Plugins\Zenject\OptionalExtras\IntegrationTests\Tests\Bindings\TestFromPrefabResource\TestFromPrefabResource.cs" />
     <Compile Include="Assets\Plugins\Zenject\OptionalExtras\IntegrationTests\Tests\Util\FixtureUtil.cs" />
     <Compile Include="Assets\Plugins\Zenject\OptionalExtras\IntegrationTests\Tests\Misc\TestMonoKernelDecoration\KernelDecoratorInstaller.cs" />

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237bd29d4b2147740b86db6f2e6e9caf, type: 3}
   m_Name: Human
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 4fa532d23971a3845a89dcc82474a83b, type: 3}
-  name: Villager
-  cost: 0
-  unitsOfFood: 0
-  healthPoints: 15
+  <icon>k__BackingField: {fileID: 21300000, guid: 4fa532d23971a3845a89dcc82474a83b, type: 3}
+  <name>k__BackingField: Villager
+  <cost>k__BackingField: 0
+  <unitsOfFood>k__BackingField: 0
+  <healthPoints>k__BackingField: 15
+  <type>k__BackingField: 11

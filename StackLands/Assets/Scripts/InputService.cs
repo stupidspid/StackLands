@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using ScriptableObjects;
 using Unity.VisualScripting;
@@ -10,6 +11,9 @@ public class InputService : MonoBehaviour
     [SerializeField] private InputServiceSettings inputSettings;
 
     private Camera _mainCamera;
+    private Coroutine _dragCoroutine;
+    private Vector3 _startPosition;
+    private IDraggableItem _draggableItem;
         
     [Inject]
     private void Construct(Camera mainCamera)
@@ -21,10 +25,16 @@ public class InputService : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
             ProcessInput(Input.mousePosition);
+        if (Input.GetMouseButtonUp(0) && _dragCoroutine != null)
+        {
+            StopCoroutine(_dragCoroutine);
+            CheckTouchType();
+        }
     }
 
     private void ProcessInput(Vector3 screenPosition)
     {
+        _draggableItem = null;
         var isOverUI = EventSystem.current.IsPointerOverGameObject();
         if(isOverUI)
             return;
@@ -37,20 +47,31 @@ public class InputService : MonoBehaviour
         if(!result)
             return;
 
-        var dragableItem = result.transform.GetComponentInChildren<DragableItem>();
+        _startPosition = result.transform.position;
+        _draggableItem = result.transform.GetComponentInChildren<IDraggableItem>();
             
-        if(dragableItem == null)
+        if(_draggableItem == null)
             return;
 
-        StartCoroutine(DragItem(dragableItem));
+        _dragCoroutine = StartCoroutine(DragItemCoroutine(result.transform));
     }
 
-    private IEnumerator DragItem(DragableItem dragableItem)
+    private void CheckTouchType()
     {
-        Debug.Log("n");
-        dragableItem.transform.position = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        
-        yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
-        Debug.Log("nnn");
+        var distance = Vector3.Distance(_startPosition, _mainCamera.ScreenToWorldPoint(Input.mousePosition));
+        if (distance <= 20 && _draggableItem != null)
+        {
+            _draggableItem.OnClick();
+        }
+    }
+
+    private IEnumerator DragItemCoroutine(Transform dragableItem)
+    {
+        while (!Input.GetMouseButtonUp(0))
+        {
+            Vector2 newPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            dragableItem.position = newPosition;
+            yield return new WaitForSeconds(0.01f);
+        }
     } 
 }
