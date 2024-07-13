@@ -16,5 +16,6 @@ public class GameInstaller : MonoInstaller
         Container.BindFactory<CardController, CardsFactory>().FromComponentInNewPrefab(card);
         Container.BindInterfacesTo<BoosterPackController>().AsSingle();
         Container.BindFactory<BoosterPackController, BoostersPackFactory>().FromComponentInNewPrefab(booster);
+        Container.Bind<LayersService>().AsSingle();
     }
 }

@@ -25,10 +25,11 @@ public class InputService : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
             ProcessInput(Input.mousePosition);
-        if (Input.GetMouseButtonUp(0) && _dragCoroutine != null)
+        if (Input.GetMouseButtonUp(0) && _dragCoroutine != null && _draggableItem != null)
         {
             StopCoroutine(_dragCoroutine);
             CheckTouchType();
+            _draggableItem.OnDragEnd();
         }
     }
 
@@ -53,6 +54,7 @@ public class InputService : MonoBehaviour
         if(_draggableItem == null)
             return;
 
+        _draggableItem.OnDrag();
         _dragCoroutine = StartCoroutine(DragItemCoroutine(result.transform));
     }
 

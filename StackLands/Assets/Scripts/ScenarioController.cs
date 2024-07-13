@@ -7,6 +7,7 @@ using Zenject;
 public class ScenarioController : MonoBehaviour
 {
     [SerializeField] private BoosterPackData _boosterPackData;
+    [SerializeField] private Transform _spawnPoint;
     private BoostersPackFactory _boostersPackFactory;
     
     [Inject]
@@ -17,6 +18,6 @@ public class ScenarioController : MonoBehaviour
     private void Start()
     {
         var boostersPack = _boostersPackFactory.Create();
-        boostersPack.SetBoosterData(_boosterPackData);
+        boostersPack.SetBoosterData(_boosterPackData, _spawnPoint);
     }
 }
