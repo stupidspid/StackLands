@@ -17,5 +17,7 @@ public class GameInstaller : MonoInstaller
         Container.BindInterfacesTo<BoosterPackController>().AsSingle();
         Container.BindFactory<BoosterPackController, BoostersPackFactory>().FromComponentInNewPrefab(booster);
         Container.Bind<LayersService>().AsSingle();
+        Container.Bind<StackController>().AsSingle();
+        Container.Bind<RecipeController>().AsSingle();
     }
 }

@@ -17,5 +17,9 @@ namespace DefaultNamespace
         RABBIT = 9,
         RAT = 10,
         VILLAGER = 11,
+        
+        HOUSE = 12,
+        BERRY = 13,
+        
     }
 }

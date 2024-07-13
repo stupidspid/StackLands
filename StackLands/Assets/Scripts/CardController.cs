@@ -13,7 +13,7 @@ public class CardController : MonoBehaviour, IDraggableItem
     [field: SerializeField] public SpriteRenderer CardIcon { get; private set; }
     [SerializeField] private TextMeshPro _cardCost;
 
-    private CardType _cardType;
+    
     private LayersService _layersService;
     private Transform _startSpawnPoint;
     
@@ -24,10 +24,11 @@ public class CardController : MonoBehaviour, IDraggableItem
     }
 
     public Action OnDragEnded;
-    
+    public CardType CardType { get; private set; }
+
     public void SetCard(Sprite cardIcon, int cost, CardType cardType, Transform spawnPoint)
     {
-        _cardType = cardType;
+        CardType = cardType;
         CardIcon.sprite = cardIcon;
         _cardCost.text = cost.ToString();
         transform.SetParent(spawnPoint);

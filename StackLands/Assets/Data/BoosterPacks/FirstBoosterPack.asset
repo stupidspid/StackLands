@@ -22,12 +22,12 @@ MonoBehaviour:
   - card: {fileID: 11400000, guid: 9cc55210cc635de4bb4ecf6d246cff2a, type: 2}
     dropChance: 1
     boosterPackType: 0
-  - card: {fileID: 11400000, guid: 9e70b88b1dcece6408d15814206a5511, type: 2}
+  - card: {fileID: 11400000, guid: 416fab8abe144fb448190ee9488e2311, type: 2}
     dropChance: 1
     boosterPackType: 0
   - card: {fileID: 11400000, guid: 8babe77686ee9d9418ba91f4007b9a46, type: 2}
     dropChance: 1
     boosterPackType: 0
-  - card: {fileID: 11400000, guid: 4524890116c88eb41945b0ba88cd61a9, type: 2}
+  - card: {fileID: 11400000, guid: 416fab8abe144fb448190ee9488e2311, type: 2}
     dropChance: 1
     boosterPackType: 0

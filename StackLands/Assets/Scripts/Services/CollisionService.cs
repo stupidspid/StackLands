@@ -3,12 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 public class CollisionService : MonoBehaviour
 {
     [SerializeField] private float offsetBetweenCardsInStack;
     private CardController _cardController;
     private CardController _otherCard;
+    private StackController _stackController;
+    
+    [Inject]
+    private void Construct(StackController stackController)
+    {
+        _stackController = stackController;
+    }
     
     private void Start()
     {
@@ -43,6 +51,22 @@ public class CollisionService : MonoBehaviour
             
             transform.position = newPosition;
             transform.SetParent(newParent.transform);
+            
+            Transform currentParent = _otherCard.transform;
+            CardController oldestParent = null;
+            while (currentParent != null)
+            {
+                var parentComponent = currentParent.GetComponent<CardController>();
+                if (parentComponent != null)
+                {
+                    oldestParent = parentComponent;
+                }
+                currentParent = currentParent.parent;
+            }
+
+            CardController[] stackCards = oldestParent.GetComponentsInChildren<CardController>();
+            var cardTypesList = stackCards.Select(x => x.CardType).ToList();
+            _stackController.CheckIfRecipeExists(cardTypesList);
         }
     }
 

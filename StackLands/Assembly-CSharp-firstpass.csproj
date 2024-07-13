@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+    <_TargetFrameworkDirectories>non_empty_path_generated_by_unity.rider.package</_TargetFrameworkDirectories>
+    <_FullFrameworkReferenceAssemblyPaths>non_empty_path_generated_by_unity.rider.package</_FullFrameworkReferenceAssemblyPaths>
+    <DisableHandlePackageFileConflicts>true</DisableHandlePackageFileConflicts>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{7d3e4378-9986-70c1-132f-ad94f7eb7e6c}</ProjectGuid>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>.</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\Bin\Debug\Unity.Rider.Editor\</OutputPath>
+    <DefineConstants>UNITY_EDITOR</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169,0649</NoWarn>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Assets\Plugins\Google.Apis.NetworkServices.v1.1.68.0.3464\lib\net462\Google.Apis.NetworkServices.v1.xml" />
+    <None Include="Assets\Plugins\Google.Apis.Auth.1.68.0\lib\net462\Google.Apis.Auth.xml" />
+    <None Include="Assets\Plugins\Google.Apis.1.68.0\lib\net462\Google.Apis.xml" />
+    <None Include="Assets\Plugins\Google.Apis.Core.1.68.0\lib\net6.0\Google.Apis.Core.xml" />
+    <None Include="Assets\Plugins\Google.Apis.Sheets.v4.1.68.0.3421\lib\net6.0\Google.Apis.Sheets.v4.xml" />
+    <None Include="Assets\Plugins\Newtonsoft.Json.13.0.3\lib\net35\Newtonsoft.Json.xml" />
+    <None Include="Assets\Plugins\Google.Apis.Sheets.v4.1.68.0.3421\lib\netstandard2.0\Google.Apis.Sheets.v4.xml" />
+    <None Include="Assets\Plugins\Google.Apis.Auth.1.68.0\lib\net6.0\Google.Apis.Auth.xml" />
+    <None Include="Assets\Plugins\Google.Apis.NetworkServices.v1.1.68.0.3464\lib\net6.0\Google.Apis.NetworkServices.v1.xml" />
+    <None Include="Assets\Plugins\Newtonsoft.Json.13.0.3\lib\netstandard2.0\Newtonsoft.Json.xml" />
+    <None Include="Assets\Plugins\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.xml" />
+    <None Include="Assets\Plugins\Newtonsoft.Json.13.0.3\lib\net20\Newtonsoft.Json.xml" />
+    <None Include="Assets\Plugins\Google.Apis.1.68.0\lib\net6.0\Google.Apis.xml" />
+    <None Include="Assets\Plugins\Newtonsoft.Json.13.0.3\lib\netstandard1.0\Newtonsoft.Json.xml" />
+    <None Include="Assets\Plugins\Newtonsoft.Json.13.0.3\lib\netstandard1.3\Newtonsoft.Json.xml" />
+    <None Include="Assets\Plugins\Google.Apis.Auth.1.68.0\lib\netstandard2.0\Google.Apis.Auth.xml" />
+    <None Include="Assets\Plugins\Newtonsoft.Json.13.0.3\lib\net6.0\Newtonsoft.Json.xml" />
+    <None Include="Assets\Plugins\Newtonsoft.Json.13.0.3\lib\net40\Newtonsoft.Json.xml" />
+    <None Include="Assets\Plugins\Google.Apis.Sheets.v4.1.68.0.3421\lib\net462\Google.Apis.Sheets.v4.xml" />
+    <None Include="Assets\Plugins\Google.Apis.Core.1.68.0\lib\net462\Google.Apis.Core.xml" />
+    <None Include="Assets\Plugins\Google.Apis.1.68.0\lib\netstandard2.0\Google.Apis.xml" />
+    <None Include="Assets\Plugins\Google.Apis.NetworkServices.v1.1.68.0.3464\lib\netstandard2.0\Google.Apis.NetworkServices.v1.xml" />
+    <None Include="Assets\Plugins\Google.Apis.Core.1.68.0\lib\netstandard2.0\Google.Apis.Core.xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
