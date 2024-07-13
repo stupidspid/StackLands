@@ -15,6 +15,7 @@ public class CardController : MonoBehaviour, IDraggableItem
 
     private CardType _cardType;
     private LayersService _layersService;
+    private Transform _startSpawnPoint;
     
     [Inject]
     private void Construct(LayersService layersService)
@@ -30,12 +31,14 @@ public class CardController : MonoBehaviour, IDraggableItem
         CardIcon.sprite = cardIcon;
         _cardCost.text = cost.ToString();
         transform.SetParent(spawnPoint);
+        _startSpawnPoint = spawnPoint;
     }
     
     public void OnClick() { }
 
     public void OnDrag()
     {
+        transform.SetParent(_startSpawnPoint);
         CardIcon.sortingOrder = _layersService.GetMaxSortingOrder();
     }
 

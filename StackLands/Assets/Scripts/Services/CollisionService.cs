@@ -26,10 +26,7 @@ public class CollisionService : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.TryGetComponent<CardController>(out var card) == _otherCard)
-        {
-            _otherCard = null;
-        }
+        _otherCard = null;
     }
 
     private void SetNewPosition()
@@ -43,6 +40,7 @@ public class CollisionService : MonoBehaviour
             var verticalOffset = _cardController.CardIcon.bounds.size.y * offsetBetweenCardsInStack;
             var newPosition = new Vector3(newParent.transform.position.x, 
                 newParent.transform.position.y - verticalOffset, 0);
+            
             transform.position = newPosition;
             transform.SetParent(newParent.transform);
         }
