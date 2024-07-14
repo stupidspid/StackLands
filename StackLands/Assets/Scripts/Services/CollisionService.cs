@@ -11,6 +11,12 @@ public class CollisionService : MonoBehaviour
     private CardController _cardController;
     private CardController _otherCard;
     private StackController _stackController;
+
+    public CardController OtherCard
+    {
+        get => _otherCard;
+        set => _otherCard = value;
+    }
     
     [Inject]
     private void Construct(StackController stackController)
@@ -66,7 +72,10 @@ public class CollisionService : MonoBehaviour
 
             CardController[] stackCards = oldestParent.GetComponentsInChildren<CardController>();
             var cardTypesList = stackCards.Select(x => x.CardType).ToList();
-            _stackController.CheckIfRecipeExists(cardTypesList);
+            _stackController.CheckIfRecipeExists(cardTypesList, oldestParent.transform);
+            
+            foreach (var card in stackCards)
+                card.transform.GetComponent<CollisionService>().OtherCard = null;
         }
     }
 

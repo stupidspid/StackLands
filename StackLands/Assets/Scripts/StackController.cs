@@ -10,14 +10,14 @@ public class StackController
 {
     private List<Recipe> recipes = new();
 
-    public Action<CardType> OnCardCreate;
+    public Action<CardType, Transform> OnCardCreate;
     
     public void CreateNewRecipe(Recipe recipe)
     {
         recipes.Add(recipe);
     }
 
-    public void CheckIfRecipeExists(List<CardType> recipeCards)
+    public void CheckIfRecipeExists(List<CardType> recipeCards, Transform parent)
     {
         foreach (var recipe in recipes)
         {
@@ -26,7 +26,7 @@ public class StackController
             
             if (recipe.cards.SequenceEqual(recipeCards))
             {
-                OnCardCreate?.Invoke(recipe.result);
+                OnCardCreate?.Invoke(recipe.result, parent);
             }
         }
     }

@@ -24,13 +24,12 @@ public class CardsSpawnPoint : MonoBehaviour
         _stackController.OnCardCreate += CreateCard;
     }
 
-    private void CreateCard(CardType cardType)
+    private void CreateCard(CardType cardType, Transform spawnPoint)
     {
-        _cardsFactory.Create();
         var newCard = _cardsFactory.Create();
         var currentCard = _allCardsConfig.GetCardByType(cardType);
         newCard.transform.position = SpawnAroundService.GetNextPosition(1,
-            1, transform.position, 3f);
+            1, spawnPoint.position, 2f);
         newCard.SetCard(currentCard.icon, currentCard.cost, currentCard.type, transform);
     }
 }
