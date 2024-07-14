@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using ScriptableObjects;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
@@ -12,7 +10,6 @@ public class InputService : MonoBehaviour
 
     private Camera _mainCamera;
     private Coroutine _dragCoroutine;
-    private Vector3 _startPosition;
     private IDraggableItem _draggableItem;
         
     [Inject]
@@ -23,57 +20,66 @@ public class InputService : MonoBehaviour
         
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
+        {
             ProcessInput(Input.mousePosition);
-        if (Input.GetMouseButtonUp(0) && _dragCoroutine != null && _draggableItem != null)
+        }
+
+        if (Input.GetMouseButtonUp(0) && _dragCoroutine != null)
         {
             StopCoroutine(_dragCoroutine);
-            CheckTouchType();
             _draggableItem.OnDragEnd();
+            _dragCoroutine = null;
         }
     }
 
     private void ProcessInput(Vector3 screenPosition)
     {
         _draggableItem = null;
-        var isOverUI = EventSystem.current.IsPointerOverGameObject();
-        if(isOverUI)
+
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
             return;
+        }
             
         var worldPos = _mainCamera.ScreenToWorldPoint(screenPosition);
+        var result = Physics2D.Raycast(worldPos, Vector3.forward, 
+                                       inputSettings.RaycastDistance, inputSettings.SupportedLayers);
         
-        var result = Physics2D.Raycast(worldPos, Vector3.forward,
-            inputSettings.RaycastDistance, inputSettings.SupportedLayers);
-        
-        if(!result)
+        if (result.collider == null)
+        {
             return;
+        }
 
-        _startPosition = result.transform.position;
         _draggableItem = result.transform.GetComponentInChildren<IDraggableItem>();
+
+        OnClick(result.transform.gameObject);
             
-        if(_draggableItem == null)
+        if (_draggableItem == null)
+        {
             return;
+        }
 
         _draggableItem.OnDrag();
         _dragCoroutine = StartCoroutine(DragItemCoroutine(result.transform));
     }
 
-    private void CheckTouchType()
+    private void OnClick(GameObject clickedObject)
     {
-        var distance = Vector3.Distance(_startPosition, _mainCamera.ScreenToWorldPoint(Input.mousePosition));
-        if (distance <= 20 && _draggableItem != null)
+        IDraggableItem draggable = clickedObject.GetComponent<IDraggableItem>();
+        if (draggable != null)
         {
-            _draggableItem.OnClick();
+            draggable.OnClick();
         }
     }
 
-    private IEnumerator DragItemCoroutine(Transform dragableItem)
+    private IEnumerator DragItemCoroutine(Transform draggableItem)
     {
         while (!Input.GetMouseButtonUp(0))
         {
             Vector2 newPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            dragableItem.position = newPosition;
-            yield return new WaitForSeconds(0.01f);
+            draggableItem.position = new Vector3(newPosition.x, newPosition.y, draggableItem.position.z);
+            yield return null;
         }
     } 
 }
